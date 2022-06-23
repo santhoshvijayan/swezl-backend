@@ -1,5 +1,14 @@
 'use strict';
 
+const { default: axios } = require("axios");
+const uploader = require('../../../uploader');
+// const { default: Blob } = require("buffer");
+
+
+
+
+
+
 /**
  * posts-report service.
  */
@@ -56,14 +65,21 @@
         console.log("sellecround"+sellerFound.length);
 
         if(sellerFound.length>0)  {
+          
+          const img = await uploader.uploadToLibrary(requestBody.items[0].image);
+          console.log("img"+JSON.stringify(img));
            const item = await strapi.entityService.create("api::item.item",{
             data: {
               details: requestBody.items[0].details,
               age: requestBody.items[0].age,
+              media: img.id,
               order: 2
             }
            });
            console.log(JSON.stringify(item));
+        
+
+
         }else{
 
         }

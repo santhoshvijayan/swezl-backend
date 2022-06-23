@@ -13,11 +13,11 @@
   "pluginOptions": {},
   "attributes": {
     "details": {
-      "type": "string"
+      "type": "text"
     },
     "media": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
@@ -25,9 +25,6 @@
         "videos",
         "audios"
       ]
-    },
-    "age": {
-      "type": "integer"
     },
     "manufacturer": {
       "type": "string"
@@ -58,6 +55,13 @@
       "relation": "manyToOne",
       "target": "api::seller.seller",
       "inversedBy": "items"
+    },
+    "age": {
+      "type": "string"
+    },
+    "offer_accepted": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
